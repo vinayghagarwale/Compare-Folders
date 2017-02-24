@@ -1,0 +1,122 @@
+﻿<Window x:Class="CompareFolders.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompareFolders"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Compare Folders" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition  Width="70" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition  Width="70" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Source  " HorizontalAlignment="Right" />
+                    <TextBox  Name="txtFolder1" Grid.Column="1" />
+                    <Button Click="btnSelect1_Click" Name="btnSelect1" Grid.Column="2" Content="F" Height="20" VerticalAlignment="Top" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Destination  " HorizontalAlignment="Right"/>
+                    <TextBox Name="txtFolder2" Grid.Column="1" />
+                    <Button Click="btnSelect2_Click" Name="btnSelect2" Grid.Column="2" Content="F" />
+                </Grid>
+                <Button Click="btnCompare_Click" Name="btnCompare" Grid.Column="2" Content="Compare" Grid.RowSpan="2" />
+                <Button Click="btnClear_Click" Name="btnClear" Grid.Column="4" Content="Clear" Grid.RowSpan="2" />
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Name="radAllType" Grid.Row="0" Content="All File Type" Checked="radAllType_Checked" />
+                    <RadioButton Name="radFilterType"  Grid.Row="1" Content="Filter File Type" Checked="radFilterType_Checked" />
+
+                    <StackPanel Name="stkChk" Orientation="Horizontal" Grid.Column="1" >
+                        <CheckBox Name="chkDll" Content="Dll  " />
+                        <CheckBox Name="chkexe" Content="exe  " />
+                        <CheckBox Name="chktxt" Content="txt  " />
+                        <CheckBox Name="chkttf" Content="ttf  " />
+                        <CheckBox Name="chkocx" Content="ocx  " />
+                        <CheckBox Name="chkZip" Content="Zip  " />
+                        <CheckBox Name="chkxslt" Content="xslt  " />
+                        <CheckBox Name="chkxml" Content="xml  " />
+                        <CheckBox Name="chkdoc" Content="doc  " />
+                    </StackPanel>
+                    <StackPanel Name="stkChkther" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                        <CheckBox Name="chkother" Content="Others  " Click="chkother_Click" />
+                        <TextBox Name="txtother" Width="200" />
+                        <TextBlock Name="tblMessage" Text="(Add semi colon separated for multiple entry ex. dll;exe;txt;)" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="7"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="7"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="txtHeader1" Text="Only in Source" HorizontalAlignment="Center" />
+                    <TextBlock Name="txtHeader" Text="Common" HorizontalAlignment="Center" Grid.Column="2" />
+                    <TextBlock Name="txtHeader2" Text="Only in Destination" HorizontalAlignment="Center" Grid.Column="4"/>
+                    
+                    <ListBox Name="lstDiffResults1"  Grid.Row="1" Grid.Column="0" />
+                    <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+                    <ListBox Name="lstSameResults" Grid.Row="1" Grid.Column="2" />
+                    <GridSplitter Grid.Row="1" Grid.Column="3" Width="5" HorizontalAlignment="Stretch" />
+                    <ListBox Name="lstDiffResults2"  Grid.Row="1" Grid.Column="4" />
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <TextBlock Text="Compare Folders" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" />
+    </Grid>
+</Window>
